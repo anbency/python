@@ -50,7 +50,7 @@ def shell_sort(lists):
 	'''
 	count = len(lists)
 	step = 2
-	groups = count / step
+	groups = count // step
 	while groups > 0:
 		for i in range(0, groups):
 			j = i + groups
@@ -63,7 +63,7 @@ def shell_sort(lists):
 						lists[k] = key
 					k -= groups
 				j += groups
-		groups /= step
+		groups //= step
 			
 	return lists
 
@@ -177,7 +177,7 @@ def merge_sort(lists):
 	'''
 	if len(lists) <= 1:
 		return lists
-	mid = len(lists) / 2
+	mid = len(lists) // 2
 	left = merge_sort(lists[:mid])
 	right = merge_sort(lists[mid:])
 	return merge(left, right)
@@ -186,7 +186,7 @@ def adjust_heap(lists, i, size):
 	lchild = 2 * i + 1
 	rchild = 2 * i + 2
 	max = i
-	if max < size / 2:
+	if max < size // 2:
 		if lchild < size and lists[lchild] > lists[max]:
 			max = lchild
 		if rchild < size and lists[rchild] > lists[max]:
@@ -196,7 +196,7 @@ def adjust_heap(lists, i, size):
 			adjust_heap(lists, max, size)
 
 def build_heap(lists, size):
-	for i in range(0, size / 2)[::-1]:
+	for i in range(0, size // 2)[::-1]:
 		adjust_heap(lists, i, size)
 
 def heap_sort(lists):
